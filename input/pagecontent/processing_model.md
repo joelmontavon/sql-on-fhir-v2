@@ -10,6 +10,7 @@ model produces.
 **Inputs**
 * `V`: a `ViewDefinition` to validate
 
+**Steps**
 1. Call `ValidateColumns(V, C)` according to the recursive step below.
 
 ### `ValidateColumns(S, C)` (recursive step)
@@ -27,6 +28,7 @@ model produces.
 * Column Already Defined
 * Union Branches Inconsistent
 
+**Steps**
 0. Initialize `Ret` to equal `C`
 
 1. For each Column `col` in `S.column[]`
@@ -59,6 +61,7 @@ model produces.
 
 **Emits:** one output row at a time
 
+**Steps**
 1. Ensure resource type is correct
     * If `R.resourceType` is different from `V.resource`, return immediately without emitting any rows
     * Otherwise, continue
@@ -95,6 +98,7 @@ Then the Cartesian product of these sets consists of four complete rows:
 
 **Emits:** One output row at a time
 
+**Steps**
 1. Define a list of Nodes `foci` as
     *  If `S.forEach` is defined: `fhirpath(S.forEach, N)`
     *  Else if `S.forEachOrNull` is defined: `fhirpath(S.forEachOrNull, N)`
